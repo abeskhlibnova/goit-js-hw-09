@@ -1,0 +1,34 @@
+.btn {
+    border: 2px solid rgb(0, 0, 0, 0.5);
+    border-radius: 4px;
+    background-color: rgb(138, 43, 226, 0.2);
+}
+
+.timer__items{
+    display: flex;
+    }
+    
+.timer__field {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.timer__item_value {
+    min-width: 60px;
+    margin-right: 10px;
+    padding-top: 15px;
+    text-align: center;
+    font-size: 45px;
+}
+
+.timer__item_label {
+    min-width: 60px;
+    margin-right: 10px;
+    padding-bottom: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: 500;
+    text-transform: uppercase;
+}
