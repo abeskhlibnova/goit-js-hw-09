@@ -23,9 +23,9 @@ const dataOptions = {
         if(selectedDates[0] < today){
             Notiflix.Notify.failure("Please choose a date in the future");
             startBtn.setAttribute("disabled",  "disabled");
+            
         } else{
             startBtn.removeAttribute("disabled");
-            
         }
     },
 };
@@ -47,8 +47,12 @@ start() {
     if(parseData > curretnTime) {
         let time = convertMs(total);
         updateClock(time);
+        startBtn.setAttribute("disabled",  "disabled");
+        dataTimePicker.setAttribute("disabled",  "disabled");
     } else {
-        clearInterval(this.intervalId)  
+        clearInterval(this.intervalId) ;
+        startBtn.removeAttribute("disabled"); 
+        dataTimePicker.removeAttribute("disabled"); 
     }
 }, 1000);
 },

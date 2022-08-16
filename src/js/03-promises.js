@@ -8,41 +8,34 @@ const refs = {
   btn: document.querySelector("button"),
 }
 
-let position = 0;
-
 refs.form.addEventListener("submit", timeout);
 
 function timeout (e){
-    e.preventDefault();
-    setTimeout(() => {
-    interval();
-  }, refs.delayInput.value)
-}
+  e.preventDefault();
+  let delay = parseInt(refs.delayInput.value);
+  const step = parseInt(refs.stepInput.value);
+  const amount = refs.amountInput.value;
 
-function interval() {
-  position = 0;
-  setInterval(() => {
-  position += 1;
-  if (position > refs.amountInput.value) {
-      return;
-    }
-  createPromise(position, refs.delayInput.value)
-    .then(ok)
-    .catch(notOk);
-  }, refs.stepInput.value);
+for (let i = 0; i < amount; i += 1){
+  createPromise(i + 1, delay)
+  .then(ok)
+  .catch(notOk);
+  delay += step;
+}
 }
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
-;
-  const shouldResolve = Math.random() > 0.3;
+setTimeout(() => {
+    const shouldResolve = Math.random() > 0.3;
   if (shouldResolve) {
     resolve(`✅ Fulfilled promise ${position} in ${delay} ms`);
   } else {
     reject(`❌ Rejected promise ${position} in ${delay} ms`);
   }
-    })
-  }
+}, delay);
+})
+}
     
   function ok(result) {
     Notiflix.Notify.success(result);

@@ -21,10 +21,12 @@ const colorSwitcher = {
         this.isActive = true;
             this.intervalId = setInterval(() => {
             refs.body.style.background = getRandomHexColor();
+            refs.btnStart.setAttribute("disabled", "disabled" )
         }, 1000);
     },
     stop() {
         clearInterval(this.intervalId);
         this.isActive = false;
+        refs.btnStart.removeAttribute("disabled");
     },
 }
